@@ -16,8 +16,8 @@ jobs:
       - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
-          username: 0644012368
-          password: 0644012368
+          username: "0644012368"
+          password: "0644012368"
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
