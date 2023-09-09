@@ -1,11 +1,23 @@
 ## Docker commands used to build the application 
 # TODO: insert the docker build command
+docker build -t techtrends .\project\
 
 ## Docker commands used to run the application
 # TODO: insert the docker run command
+docker run -d -p 7111:3111 techtrends
 
 ## Docker commands used to get the application logs
 # TODO: insert the docker logs command
+ docker logs a5ebcdbbc47e509a3740f8181775e2c0f566cdcdaa26ef26c187071f65bb617f
 
 ## Logs from the container running the TechTrends application
 # TODO: paste logs from the Docker container 
+
+2023-09-08 09:20:55,080 - WARNING -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2023-09-08 09:20:55,080 - INFO -  * Running on http://172.17.0.2:3111/ (Press CTRL+C to quit)
+2023-09-08 09:22:17,992 - INFO - 172.17.0.1 - - [08/Sep/2023 09:22:17] "GET /create HTTP/1.1" 200 -
+2023-09-08 09:22:18,014 - INFO - 172.17.0.1 - - [08/Sep/2023 09:22:18] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+2023-09-08 09:22:33,657 - INFO - 172.17.0.1 - - [08/Sep/2023 09:22:33] "[32mPOST /create HTTP/1.1[0m" 302 -
+2023-09-08 09:22:33,668 - INFO - 172.17.0.1 - - [08/Sep/2023 09:22:33] "GET / HTTP/1.1" 200 -
+2023-09-08 09:22:33,727 - INFO - 172.17.0.1 - - [08/Sep/2023 09:22:33] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
