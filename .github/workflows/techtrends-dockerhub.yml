@@ -28,4 +28,4 @@ jobs:
           context: ./project
           file: ./project/Dockerfile # Path to your Dockerfile
           push: true
-          tags: techtrends:latest
+          tags: 0644012368/techtrends:latest
