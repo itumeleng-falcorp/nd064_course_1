@@ -2,9 +2,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: techtrends
   labels:
-    app: techtrends
+      app: techtrends
+  name: techtrends
+  namespace: {{ .Values.namespace.name }}
 spec:
   replicas: {{ .Values.replicaCount }}
   template:
@@ -13,8 +14,8 @@ spec:
         app: techtrends
     spec:
       containers:
-        - name: techtrends
-          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          name: techtrends
           ports:
             - containerPort: {{ .Values.containerPort }}
           resources:
