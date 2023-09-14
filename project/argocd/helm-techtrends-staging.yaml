@@ -11,7 +11,7 @@ spec:
   source:
     helm:
       valueFiles:
-      - project/values.yaml
-    path: helm
+      - values.yaml
+    path: project/helm
     repoURL: https://github.com/itumeleng-falcorp/nd064_course_1
     targetRevision: HEAD
