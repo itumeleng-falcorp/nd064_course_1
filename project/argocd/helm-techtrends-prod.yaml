@@ -5,12 +5,13 @@ metadata:
   namespace: argocd
 spec:
   destination:
-    namespace: default 
+    namespace: default
     server: https://kubernetes.default.svc
+  project: default
   source:
     helm:
       valueFiles:
-        - values-prod.yaml
+      - project/values.yaml
     path: helm
-    repoURL: https://github.com/itumeleng-falcorp/nd064_course_1/project 
+    repoURL: https://github.com/itumeleng-falcorp/nd064_course_1
     targetRevision: HEAD
