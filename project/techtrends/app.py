@@ -3,6 +3,9 @@ from flask import Flask, jsonify, json, render_template, request, url_for, redir
 from werkzeug.exceptions import abort
 import logging
 
+# Initialize connection count
+connection_count = 0
+
 # Configure logging
 logging.basicConfig(filename='techtrends.log',
                     level=logging.DEBUG,
@@ -13,8 +16,10 @@ logging.basicConfig(filename='techtrends.log',
 # This function connects to database
 # with the name `database.db`
 def get_db_connection():
+    global connection_count  # Use the global connection count variable
     connection = sqlite3.connect('database.db')
     connection.row_factory = sqlite3.Row
+    connection_count += 1  # Increment connection count
     return connection
 
 
@@ -47,15 +52,17 @@ def index():
 def post(post_id):
     post = get_post(post_id)
     if post is None:
+        logging.warning(f"Article with ID {post_id} not found. Returning a 404 page.")
         return render_template('404.html'), 404
     else:
-        #   logging.info("Article  'About Us' page")
+        logging.info(post["title"])
         return render_template('post.html', post=post)
 
 
 # Define the About Us page
 @app.route('/about')
 def about():
+    logging.info("About Us")
     return render_template('about.html')
 
 
@@ -69,6 +76,7 @@ def create():
         if not title:
             flash('Title is required!')
         else:
+            logging.info(title)
             connection = get_db_connection()
             connection.execute('''INSERT INTO posts (title, content)
                                VALUES (?, ?)''',
@@ -100,7 +108,7 @@ def metrics():
     return jsonify(
                 {
                     "status_code": 200,
-                    "db_connection_count": 1,
+                    "db_connection_count": connection_count,
                     "post_count": posts
                 }
             )
