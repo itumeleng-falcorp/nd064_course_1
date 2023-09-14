@@ -11,7 +11,7 @@ spec:
   source:
     helm:
       valueFiles:
-      - values.yaml
+      - values-staging.yaml
     path: project/helm
     repoURL: https://github.com/itumeleng-falcorp/nd064_course_1
     targetRevision: HEAD
